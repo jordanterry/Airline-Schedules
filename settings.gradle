@@ -1,0 +1,30 @@
+rootProject.name = 'scheduler'
+enableFeaturePreview("VERSION_CATALOGS")
+apply from: 'buildSrc/dependencies.gradle.kts'
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+    }
+}
+
+include 'apps'
+include 'core'
+include 'apps:planner'
+include 'core:flight-aware:api'
+include 'core:flight-aware:json'
+include 'core:flight-aware:implementation'
+include 'core:flight-aware:implementation-fake'
+include 'core:flight-aware:di'
+include 'core:flight-aware:di-fake'
+include 'core:flight-aware'
+include 'core:networking:api'
+include 'core:networking:implementation'
+include 'core:networking:di'
+include 'core:networking'
+include 'core:billing:api'
+include 'core:billing:implementation'
+include 'core:billing:di'
+include 'core:billing'
+include 'core:schema'

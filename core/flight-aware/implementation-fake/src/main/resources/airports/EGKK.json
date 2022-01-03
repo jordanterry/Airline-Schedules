@@ -1,0 +1,14 @@
+{
+  "airport_code": "EGKK",
+  "alternate_ident": "LGW",
+  "name": "London Gatwick",
+  "elevation": 196,
+  "city": "London",
+  "state": "England",
+  "longitude": -0.190278,
+  "latitude": 51.148056,
+  "timezone": "Europe/London",
+  "country_code": "GB",
+  "wiki_url": "https://en.wikipedia.org/wiki/Gatwick_Airport",
+  "airport_flights_url": "/airports/EGKK/flights"
+}
