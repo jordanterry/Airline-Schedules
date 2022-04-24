@@ -4,6 +4,6 @@ plugins {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation(project(":core:billing:api"))
+    implementation(project(":foundations:billing:api"))
     implementation(libs.inject)
 }

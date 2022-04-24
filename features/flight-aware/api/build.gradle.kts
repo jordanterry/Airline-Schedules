@@ -4,5 +4,5 @@ plugins {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    api(project(":core:schema"))
+    api(project(":foundations:schema"))
 }

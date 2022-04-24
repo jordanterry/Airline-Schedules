@@ -1,6 +1,5 @@
 plugins {
     kotlin("kapt")
-    id("com.jakewharton.mosaic")
     id("application")
     id("com.github.johnrengelman.shadow") version "5.0.0"
 }
@@ -20,7 +19,7 @@ dependencies {
     implementation(libs.dagger.core)
     implementation(libs.coroutines)
     kapt(libs.dagger.compiler)
-    implementation(project(":core:networking"))
-    implementation(project(":core:billing"))
-    implementation(project(":core:flight-aware"))
+    implementation(project(":foundations:networking"))
+    implementation(project(":foundations:billing"))
+    implementation(project(":features:flight-aware"))
 }

@@ -1,7 +1,7 @@
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.5.10")
+            version("kotlin", "1.6.20")
             version("coroutines", "1.6.0")
             version("okhttp", "4.3.1")
             version("retrofit", "2.7.1")

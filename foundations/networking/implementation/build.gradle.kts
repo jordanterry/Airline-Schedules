@@ -1,5 +1,5 @@
 dependencies {
-    implementation(project(":core:networking:api"))
+    implementation(project(":foundations:networking:api"))
     api(libs.bundles.networking)
     implementation(libs.bundles.async)
 }

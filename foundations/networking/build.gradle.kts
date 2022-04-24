@@ -1,11 +1,7 @@
-plugins {
-    kotlin("jvm")
-}
-
 dependencies {
-    api(project(":core:billing:api"))
-    api(project(":core:billing:di"))
-    implementation(project(":core:billing:implementation"))
+    api(project(":foundations:networking:api"))
+    api(project(":foundations:networking:di"))
+    implementation(project(":foundations:networking:implementation"))
 }
 subprojects {
     tasks.withType<Jar> {
