@@ -1,5 +1,4 @@
 rootProject.name = 'scheduler'
-enableFeaturePreview("VERSION_CATALOGS")
 apply from: 'buildSrc/dependencies.gradle.kts'
 
 dependencyResolutionManagement {
