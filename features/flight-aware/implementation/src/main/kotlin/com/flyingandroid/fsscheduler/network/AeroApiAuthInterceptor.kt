@@ -1,13 +1,11 @@
 package com.flyingandroid.fsscheduler.network
 
-import okhttp3.Interceptor
-import okhttp3.Response
+import com.flyingandroid.fsscheduler.NetworkInterceptor
+import com.flyingandroid.fsscheduler.NetworkRequest
 import javax.inject.Inject
 
-class AeroApiAuthInterceptor @Inject constructor() : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val requestBuilder = chain.request().newBuilder()
-        requestBuilder.addHeader("x-apikey", Config.API_KEY)
-        return chain.proceed(requestBuilder.build())
+class AeroApiAuthNetworkInterceptor @Inject constructor(): NetworkInterceptor {
+    override fun intercept(networkRequest: NetworkRequest): NetworkRequest {
+        return networkRequest.copy(headers = networkRequest.headers + ("x-api-key" to Config.API_KEY))
     }
 }

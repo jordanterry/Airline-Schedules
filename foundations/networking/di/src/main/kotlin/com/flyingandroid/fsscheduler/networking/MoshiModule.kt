@@ -10,7 +10,6 @@ import javax.inject.Named
 
 @Module(includes = [MoshiModule.MultiBindings::class])
 object MoshiModule {
-
     @Provides
     fun providesMoshi(@MoshiAdapter adapters: Set<@JvmSuppressWildcards Any>): Moshi {
         return Moshi.Builder().apply {

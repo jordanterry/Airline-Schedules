@@ -1,16 +1,14 @@
 plugins {
     kotlin("kapt")
     id("application")
-    id("com.github.johnrengelman.shadow") version "5.0.0"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 group = "com.flyingandroid"
 version = "1.0-SNAPSHOT"
 
+project.setProperty("mainClassName", "com.flyingandroid.fsscheduler.planner.PlannerKt")
 
-application {
-    mainClass.set("com.flyingandroid.fsscheduler.planner.PlannerKt")
-}
 tasks.withType<Jar> {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }

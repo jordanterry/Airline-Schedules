@@ -11,7 +11,6 @@ buildscript {
     }
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.20")
-        classpath("com.jakewharton.mosaic:mosaic-gradle-plugin:0.1.0")
     }
 }
 
