@@ -5,8 +5,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.Multibinds
-import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Named
 
 @Module(includes = [MoshiModule.MultiBindings::class])
 object MoshiModule {
@@ -20,14 +18,9 @@ object MoshiModule {
         }.build()
     }
 
-    @Provides
-    fun providesMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory {
-        return MoshiConverterFactory.create(moshi)
-    }
-
     @Module
     interface MultiBindings {
-        @Named("MoshiAdapters")
+        @MoshiAdapter
         @Multibinds
         fun multiBindsMoshiAdapters(): Set<@JvmSuppressWildcards Any>
     }

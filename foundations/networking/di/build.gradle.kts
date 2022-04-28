@@ -4,8 +4,8 @@ plugins {
 
 dependencies {
     implementation(libs.dagger.core)
-    implementation(project(":foundations:networking:api"))
+    api(project(":foundations:networking:api"))
     implementation(project(":foundations:networking:implementation"))
-    
+    implementation(libs.bundles.json)
     kapt(libs.dagger.compiler)
 }

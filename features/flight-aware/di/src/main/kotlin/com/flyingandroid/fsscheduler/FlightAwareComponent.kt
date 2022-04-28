@@ -9,7 +9,6 @@ import dagger.Component
         AirlinesModule::class,
         AirportsModule::class,
         FlightsModule::class,
-        FlightAwareServiceModule::class,
         FlightAwareInterceptorsModule::class
     ],
     dependencies = [NetworkingComponent::class, BillingComponent::class]

@@ -8,9 +8,10 @@ import dagger.Provides
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 
-@Module
+@Module(
+    includes = [InterceptorsModule::class, InterceptorsModule.MultiBindings::class]
+)
 object OkHttpModule {
-
     @Provides
     fun compositeInterceptor(interceptors: Set<@JvmSuppressWildcards NetworkInterceptor>): Interceptor {
         return CompositeInterceptor(interceptors)

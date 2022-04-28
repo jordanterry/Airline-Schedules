@@ -6,8 +6,8 @@ import com.flyingandroid.fsscheduler.schema.FlightSchedule
 import javax.inject.Inject
 
 class FlightsImpl @Inject constructor(
-    private val flightAwareService: FlightAwareService,
     private val billing: Billing,
+    private val requestMaker: RequestMaker,
 ) : Flights {
     override suspend fun scheduled(icao: String): FlightSchedule {
         billing.record(
@@ -17,6 +17,12 @@ class FlightsImpl @Inject constructor(
                 "Scheduled flights for $icao"
             )
         )
-        return flightAwareService.getScheduleFlightsByIcao(icao)
+        val replaced = AIRLINES_PATH.replace("{icao}", icao)
+        return requestMaker.get("$BASE_URL$replaced", FlightSchedule::class.java)
+    }
+
+    companion object {
+        private const val BASE_URL = "https://aeroapi.flightaware.com/aeroapi/"
+        private const val AIRLINES_PATH = "operators/{icao}/flights/scheduled"
     }
 }
