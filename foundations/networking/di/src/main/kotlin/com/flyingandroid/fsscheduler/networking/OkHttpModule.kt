@@ -1,24 +1,27 @@
 package com.flyingandroid.fsscheduler.networking
 
-import com.flyingandroid.fsscheduler.CompositeInterceptor
-import com.flyingandroid.fsscheduler.NetworkInterceptor
-import com.flyingandroid.fsscheduler.OkHttpBuilder
 import dagger.Module
 import dagger.Provides
-import okhttp3.Interceptor
+import okhttp3.Cache
 import okhttp3.OkHttpClient
+import java.io.File
 
-@Module(
-    includes = [InterceptorsModule::class, InterceptorsModule.MultiBindings::class]
-)
+@Module
 object OkHttpModule {
+
     @Provides
-    fun compositeInterceptor(interceptors: Set<@JvmSuppressWildcards NetworkInterceptor>): Interceptor {
-        return CompositeInterceptor(interceptors)
+    fun cache(): Cache {
+        return Cache(
+            directory = File("./http_cache"),
+            maxSize = 50L * 1024L * 1024L
+        )
     }
 
     @Provides
-    fun providesOkHttpModule(compositeInterceptor: CompositeInterceptor): OkHttpClient {
-        return OkHttpBuilder.build(compositeInterceptor)
+    fun providesOkHttpModule(cache: Cache): OkHttpClient {
+        return OkHttpClient
+            .Builder()
+            .cache(cache)
+            .build()
     }
 }

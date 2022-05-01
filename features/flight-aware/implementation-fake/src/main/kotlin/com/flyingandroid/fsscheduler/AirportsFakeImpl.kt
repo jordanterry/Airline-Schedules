@@ -8,9 +8,9 @@ import javax.inject.Inject
 class AirportsFakeImpl @Inject constructor(
     private val moshi: Moshi
 ) : Airports {
-    override suspend fun byCode(airportCode: String): Airport {
+    override suspend fun byIcao(icao: String): Airport {
         val adapter = moshi.adapter(Airport::class.java)
-        val jsonReader = JsonReader.of(loadFromResources("airports/$airportCode.json"))
+        val jsonReader = JsonReader.of(loadFromResources("airports/$icao.json"))
         return adapter.fromJson(jsonReader)!!
     }
 }

@@ -5,9 +5,14 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoSet
 
-@Module
-interface FlightAwareInterceptorsModule {
-    @IntoSet
-    @Binds
-    fun bindsAeroApiAuthInterceptor(aeroApiAuthInterceptor: AeroApiAuthNetworkInterceptor): NetworkInterceptor
+@Module(
+    includes = [FlightAwareInterceptorsModule.Bindings::class]
+)
+object FlightAwareInterceptorsModule {
+    @Module
+    interface Bindings {
+        @IntoSet
+        @Binds
+        fun bindsAeroApiAuthInterceptor(aeroApiAuthInterceptor: AeroApiAuthNetworkInterceptor): RequestInterceptor
+    }
 }

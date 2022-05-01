@@ -10,5 +10,6 @@ dependencies {
     implementation(project(":foundations:networking:api"))
     implementation(project(":foundations:billing:di"))
     implementation(libs.dagger.core)
+    implementation(libs.bundles.json)
     kapt(libs.dagger.compiler)
 }

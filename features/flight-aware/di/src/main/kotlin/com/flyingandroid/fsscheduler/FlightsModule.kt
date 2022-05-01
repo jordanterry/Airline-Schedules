@@ -1,23 +1,36 @@
 package com.flyingandroid.fsscheduler
 
-import com.flyingandroid.fsscheduler.networking.MoshiAdapter
-import dagger.Binds
+import com.flyingandroid.fsscheduler.billing.Billing
+import com.flyingandroid.fsscheduler.data.FlightsDataSource
+import com.flyingandroid.fsscheduler.data.RemoteFlightsDataSource
+import com.squareup.moshi.Moshi
 import dagger.Module
-import dagger.multibindings.IntoSet
+import dagger.Provides
 
 @Module(
-    includes = [FlightAwareServiceModule::class, FlightsModule.Bindings::class]
+    includes = [FlightsModule.Bindings::class]
 )
 object FlightsModule {
-    @Module
-    interface Bindings {
 
-        @MoshiAdapter
-        @Binds
-        @IntoSet
-        fun bindsScheduleAdapter(scheduledFlightsAdapter: ScheduledFlightsAdapter): Any
-
-        @Binds
-        fun bindsFlights(flightsImpl: FlightsImpl): Flights
+    @Remote
+    @Provides
+    fun providesRemoteFlightDataSource(
+        billing: Billing, requestMaker: RequestMaker, moshi: Moshi
+    ): FlightsDataSource {
+        return RemoteFlightsDataSource(
+            billing, requestMaker, moshi
+        )
     }
+
+    @Provides
+    fun providesFlights(
+        @Remote remoteFlightsDataSource: RemoteFlightsDataSource
+    ): Flights {
+        return FlightsImpl(
+            remoteFlightsDataSource = remoteFlightsDataSource
+        )
+    }
+
+    @Module
+    interface Bindings
 }

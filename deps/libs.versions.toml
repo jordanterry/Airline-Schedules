@@ -13,14 +13,16 @@ coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 inject = { module = "javax.inject:javax.inject", version.ref = "inject" }
-moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 okhttp-bom = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 okhttp = { module = "com.squareup.okhttp3:okhttp" }
 okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 
 [bundles]
 async = ["coroutines"]
-json = ["moshi"]
+json = ["moshi", "moshi-kotlin"]
 networking = ["okhttp-bom", "okhttp"]
 io = ["okio"]
            
