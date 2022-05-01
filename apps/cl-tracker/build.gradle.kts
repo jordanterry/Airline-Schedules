@@ -2,6 +2,7 @@ plugins {
     kotlin("kapt")
     id("application")
     id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("com.jakewharton.mosaic")
 }
 
 group = "com.flyingandroid"
@@ -21,4 +22,6 @@ dependencies {
     implementation(project(":foundations:billing"))
     implementation(project(":features:flight-aware"))
     implementation(project(":features:schedules"))
+    implementation("org.jline:jline:3.21.0")
+    implementation("org.jline:jline-reader:3.21.0")
 }

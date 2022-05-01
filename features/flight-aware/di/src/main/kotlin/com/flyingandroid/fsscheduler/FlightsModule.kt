@@ -24,7 +24,7 @@ object FlightsModule {
 
     @Provides
     fun providesFlights(
-        @Remote remoteFlightsDataSource: RemoteFlightsDataSource
+        @Remote remoteFlightsDataSource: FlightsDataSource
     ): Flights {
         return FlightsImpl(
             remoteFlightsDataSource = remoteFlightsDataSource

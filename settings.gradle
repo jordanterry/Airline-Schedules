@@ -1,10 +1,13 @@
 rootProject.name = 'scheduler'
-apply from: 'buildSrc/dependencies.gradle.kts'
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenCentral()
+    }
+    versionCatalogs {
+        create("libs") {
+            from(files("deps/libs.versions.toml"))
+        }
     }
 }
 
@@ -32,4 +35,3 @@ include 'features:schedules'
 include 'features:schedules:api'
 include 'features:schedules:implementation'
 include 'features:schedules:di'
-
