@@ -1,17 +1,20 @@
 rootProject.name = 'scheduler'
-apply from: 'buildSrc/dependencies.gradle.kts'
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenCentral()
+    }
+    versionCatalogs {
+        create("libs") {
+            from(files("deps/libs.versions.toml"))
+        }
     }
 }
 
 include 'apps'
 include 'features'
 include 'foundations'
-include 'apps:planner'
+include 'apps:cl-tracker'
 include 'features:flight-aware:api'
 include 'features:flight-aware:json'
 include 'features:flight-aware:implementation'
@@ -28,3 +31,7 @@ include 'foundations:billing:implementation'
 include 'foundations:billing:di'
 include 'foundations:billing'
 include 'foundations:schema'
+include 'features:schedules'
+include 'features:schedules:api'
+include 'features:schedules:implementation'
+include 'features:schedules:di'

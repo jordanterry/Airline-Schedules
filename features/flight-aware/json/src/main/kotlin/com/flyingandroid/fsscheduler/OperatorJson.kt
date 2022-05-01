@@ -1,5 +1,9 @@
 package com.flyingandroid.fsscheduler
 
+import com.flyingandroid.fsscheduler.schema.Airline
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class OperatorJson(
     val icao: String, // The operator's ICAO code.
     val iata: String? = null, // The operator's IATA code.
@@ -12,3 +16,12 @@ data class OperatorJson(
     val url: String? = null, // URL of operator's website.
     val wiki_url: String? = null
 )
+
+fun OperatorJson.toModel(): Airline {
+    return Airline(
+        name = name,
+        icao = icao,
+        location = location,
+        country = country
+    )
+}

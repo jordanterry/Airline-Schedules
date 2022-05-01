@@ -4,7 +4,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 
 class CompositeInterceptor(
-    private val networkInterceptors: Set<NetworkInterceptor>
+    private val networkInterceptors: Set<RequestInterceptor>
 ): Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()

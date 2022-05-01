@@ -1,9 +1,10 @@
 dependencies {
     api(project(":features:flight-aware:api"))
-    api(project(":features:flight-aware:di-fake"))
-//    api(project(":features:flight-aware:di"))
-//    implementation(project(":features:flight-aware:implementation"))
-    implementation(project(":features:flight-aware:implementation-fake"))
+    api(project(":features:flight-aware:di"))
+    implementation(project(":features:flight-aware:implementation"))
+
+//    api(project(":features:flight-aware:di-fake"))
+//    implementation(project(":features:flight-aware:implementation-fake"))
 }
 subprojects {
     tasks.withType<Jar> {

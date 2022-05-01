@@ -1,9 +1,8 @@
 package com.flyingandroid.fsscheduler
 
-import com.flyingandroid.fsscheduler.networking.MoshiAdapter
 import dagger.Binds
 import dagger.Module
-import dagger.multibindings.IntoSet
+import javax.inject.Singleton
 
 @Module(
     includes = [FlightsModule.Bindings::class]
@@ -11,13 +10,8 @@ import dagger.multibindings.IntoSet
 object FlightsModule {
     @Module
     interface Bindings {
-
-        @MoshiAdapter
         @Binds
-        @IntoSet
-        fun bindsScheduleAdapter(scheduledFlightsAdapter: ScheduledFlightsAdapter): Any
-
-        @Binds
+        @Singleton
         fun bindsFlights(flightsImpl: FakeFlightsImpl): Flights
     }
 }

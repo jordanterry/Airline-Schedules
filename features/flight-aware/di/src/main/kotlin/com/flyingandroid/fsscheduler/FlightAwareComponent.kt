@@ -1,6 +1,7 @@
 package com.flyingandroid.fsscheduler
 
 import com.flyingandroid.fsscheduler.billing.BillingComponent
+import com.flyingandroid.fsscheduler.networking.MoshiModule
 import com.flyingandroid.fsscheduler.networking.NetworkingComponent
 import dagger.Component
 
@@ -9,7 +10,8 @@ import dagger.Component
         AirlinesModule::class,
         AirportsModule::class,
         FlightsModule::class,
-        FlightAwareInterceptorsModule::class
+        FlightAwareRequestMakerModule::class,
+        MoshiModule::class
     ],
     dependencies = [NetworkingComponent::class, BillingComponent::class]
 )

@@ -1,2 +1,3 @@
 dependencies {
+    implementation(libs.moshi)
 }

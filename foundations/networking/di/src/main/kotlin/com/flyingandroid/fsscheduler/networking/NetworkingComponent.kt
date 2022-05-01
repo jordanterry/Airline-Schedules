@@ -8,7 +8,7 @@ import dagger.Component
 )
 interface NetworkingComponent {
 
-    fun requestMaker(): RequestMaker
+    fun requestMakerBuilder(): RequestMaker.Builder
 
     @Component.Factory
     interface Factory {

@@ -18,3 +18,5 @@ gradle-app.setting
 *.iml
 
 /out/
+
+/http_cache/
