@@ -1,0 +1,82 @@
+digraph {
+  graph [label="scheduler\n ",labelloc=t,fontsize=30,ranksep=1.4];
+  node [style=filled, fillcolor="#bbbbbb"];
+  rankdir=TB;
+
+  # Projects
+
+  ":apps:cl-tracker" [shape=box, fillcolor="#ffb3ba"];
+  ":features:flight-aware" [fillcolor="#ffb3ba"];
+  ":features:flight-aware:api" [fillcolor="#ffb3ba"];
+  ":features:flight-aware:di" [fillcolor="#ffb3ba"];
+  ":features:flight-aware:di-fake" [shape=box, fillcolor="#ffb3ba"];
+  ":features:flight-aware:implementation" [fillcolor="#ffb3ba"];
+  ":features:flight-aware:implementation-fake" [fillcolor="#ffb3ba"];
+  ":features:flight-aware:json" [fillcolor="#ffb3ba"];
+  ":features:schedules" [fillcolor="#ffb3ba"];
+  ":features:schedules:api" [fillcolor="#ffb3ba"];
+  ":features:schedules:di" [fillcolor="#ffb3ba"];
+  ":features:schedules:implementation" [fillcolor="#ffb3ba"];
+  ":foundations:billing" [fillcolor="#ffb3ba"];
+  ":foundations:billing:api" [fillcolor="#ffb3ba"];
+  ":foundations:billing:di" [fillcolor="#ffb3ba"];
+  ":foundations:billing:implementation" [fillcolor="#ffb3ba"];
+  ":foundations:networking" [fillcolor="#ffb3ba"];
+  ":foundations:networking:api" [fillcolor="#ffb3ba"];
+  ":foundations:networking:di" [fillcolor="#ffb3ba"];
+  ":foundations:networking:implementation" [fillcolor="#ffb3ba"];
+  ":foundations:schema" [fillcolor="#ffb3ba"];
+
+  {rank = same; ":apps:cl-tracker"; ":features:flight-aware:di-fake";}
+
+  # Dependencies
+
+  ":apps:cl-tracker" -> ":foundations:networking" [style=dotted]
+  ":apps:cl-tracker" -> ":foundations:billing" [style=dotted]
+  ":apps:cl-tracker" -> ":features:flight-aware" [style=dotted]
+  ":apps:cl-tracker" -> ":features:schedules" [style=dotted]
+  ":features:flight-aware" -> ":features:flight-aware:api"
+  ":features:flight-aware" -> ":features:flight-aware:di"
+  ":features:flight-aware" -> ":features:flight-aware:implementation" [style=dotted]
+  ":features:schedules" -> ":features:schedules:api"
+  ":features:schedules" -> ":features:schedules:di"
+  ":features:schedules" -> ":features:schedules:implementation" [style=dotted]
+  ":foundations:billing" -> ":foundations:billing:api"
+  ":foundations:billing" -> ":foundations:billing:di"
+  ":foundations:billing" -> ":foundations:billing:implementation" [style=dotted]
+  ":foundations:networking" -> ":foundations:networking:api"
+  ":foundations:networking" -> ":foundations:networking:di"
+  ":foundations:networking" -> ":foundations:networking:implementation" [style=dotted]
+  ":features:flight-aware:api" -> ":foundations:schema"
+  ":features:flight-aware:di" -> ":features:flight-aware:api" [style=dotted]
+  ":features:flight-aware:di" -> ":features:flight-aware:implementation" [style=dotted]
+  ":features:flight-aware:di" -> ":features:flight-aware:json" [style=dotted]
+  ":features:flight-aware:di" -> ":foundations:networking:di" [style=dotted]
+  ":features:flight-aware:di" -> ":foundations:networking:api" [style=dotted]
+  ":features:flight-aware:di" -> ":foundations:billing:di" [style=dotted]
+  ":features:flight-aware:di-fake" -> ":features:flight-aware:api" [style=dotted]
+  ":features:flight-aware:di-fake" -> ":features:flight-aware:json" [style=dotted]
+  ":features:flight-aware:di-fake" -> ":features:flight-aware:implementation-fake" [style=dotted]
+  ":features:flight-aware:di-fake" -> ":foundations:networking:di" [style=dotted]
+  ":features:flight-aware:di-fake" -> ":foundations:billing:di" [style=dotted]
+  ":features:flight-aware:implementation" -> ":foundations:billing:api" [style=dotted]
+  ":features:flight-aware:implementation" -> ":foundations:networking:api" [style=dotted]
+  ":features:flight-aware:implementation" -> ":features:flight-aware:api" [style=dotted]
+  ":features:flight-aware:implementation" -> ":features:flight-aware:json" [style=dotted]
+  ":features:flight-aware:implementation-fake" -> ":foundations:billing:api" [style=dotted]
+  ":features:flight-aware:implementation-fake" -> ":features:flight-aware:api" [style=dotted]
+  ":features:flight-aware:implementation-fake" -> ":features:flight-aware:json" [style=dotted]
+  ":features:flight-aware:json" -> ":foundations:schema"
+  ":features:schedules:api" -> ":features:flight-aware:api"
+  ":features:schedules:di" -> ":features:schedules:implementation" [style=dotted]
+  ":features:schedules:di" -> ":features:flight-aware:di" [style=dotted]
+  ":features:schedules:di" -> ":features:flight-aware:json" [style=dotted]
+  ":features:schedules:di" -> ":features:flight-aware:api" [style=dotted]
+  ":features:schedules:implementation" -> ":features:schedules:api"
+  ":foundations:billing:di" -> ":foundations:billing:api"
+  ":foundations:billing:di" -> ":foundations:billing:implementation" [style=dotted]
+  ":foundations:billing:implementation" -> ":foundations:billing:api" [style=dotted]
+  ":foundations:networking:di" -> ":foundations:networking:api"
+  ":foundations:networking:di" -> ":foundations:networking:implementation" [style=dotted]
+  ":foundations:networking:implementation" -> ":foundations:networking:api" [style=dotted]
+}
