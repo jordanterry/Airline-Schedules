@@ -15,6 +15,8 @@ buildscript {
     }
 }
 
+apply(from = File("projectDependencyGraph.gradle"))
+
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     dependencies {
